@@ -1,0 +1,27 @@
+<TextureAtlas imagePath="sprites.png">
+	<SubTexture name="mistaAttack1.png" x="124" y="307" width="120" height="107"/>
+	<SubTexture name="mistaAttack10.png" x="474" y="116" width="57" height="101"/>
+	<SubTexture name="mistaAttack11.png" x="328" y="397" width="73" height="101"/>
+	<SubTexture name="mistaAttack12.png" x="403" y="311" width="66" height="103"/>
+	<SubTexture name="mistaAttack2.png" x="0" y="307" width="122" height="112"/>
+	<SubTexture name="mistaAttack3.png" x="410" y="0" width="63" height="114"/>
+	<SubTexture name="mistaAttack4.png" x="341" y="98" width="67" height="108"/>
+	<SubTexture name="mistaAttack5.png" x="410" y="116" width="62" height="105"/>
+	<SubTexture name="mistaAttack6.png" x="152" y="188" width="97" height="107"/>
+	<SubTexture name="mistaAttack7.png" x="152" y="0" width="119" height="99"/>
+	<SubTexture name="mistaAttack8.png" x="257" y="101" width="82" height="108"/>
+	<SubTexture name="mistaAttack9.png" x="475" y="0" width="54" height="108"/>
+	<SubTexture name="mistaDash1.png" x="471" y="223" width="59" height="99"/>
+	<SubTexture name="mistaDash2.png" x="471" y="324" width="59" height="98"/>
+	<SubTexture name="mistaDash3.png" x="339" y="211" width="67" height="98"/>
+	<SubTexture name="mistaDash4.png" x="273" y="0" width="70" height="96"/>
+	<SubTexture name="mistaDash5.png" x="246" y="297" width="91" height="98"/>
+	<SubTexture name="mistaDash6.png" x="231" y="416" width="95" height="90"/>
+	<SubTexture name="mistaDash7.png" x="152" y="101" width="103" height="85"/>
+	<SubTexture name="mistaDash8.png" x="121" y="421" width="108" height="83"/>
+	<SubTexture name="mistaDash9.png" x="0" y="421" width="119" height="80"/>
+	<SubTexture name="mistaGlide1.png" x="0" y="229" width="150" height="76"/>
+	<SubTexture name="mistaGlide2.png" x="0" y="75" width="150" height="75"/>
+	<SubTexture name="mistaGlide3.png" x="0" y="0" width="150" height="73"/>
+	<SubTexture name="mistaGlide4.png" x="0" y="152" width="150" height="75"/>
+</TextureAtlas>

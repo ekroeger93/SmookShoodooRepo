@@ -1,0 +1,129 @@
+{ "frames": [
+   {
+    "filename": "bossAttackFx 0.ase",
+    "frame": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 1.ase",
+    "frame": { "x": 220, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 2.ase",
+    "frame": { "x": 440, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 3.ase",
+    "frame": { "x": 660, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 4.ase",
+    "frame": { "x": 880, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 5.ase",
+    "frame": { "x": 1100, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 6.ase",
+    "frame": { "x": 1320, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 7.ase",
+    "frame": { "x": 1540, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 8.ase",
+    "frame": { "x": 1760, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 9.ase",
+    "frame": { "x": 1980, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 10.ase",
+    "frame": { "x": 2200, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   },
+   {
+    "filename": "bossAttackFx 11.ase",
+    "frame": { "x": 2420, "y": 0, "w": 220, "h": 242 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 220, "h": 242 },
+    "sourceSize": { "w": 220, "h": 242 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "bossAttackFx.png",
+  "format": "RGBA8888",
+  "size": { "w": 2640, "h": 242 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "1", "from": 0, "to": 3, "direction": "forward" },
+   { "name": "2", "from": 4, "to": 7, "direction": "forward" },
+   { "name": "3", "from": 8, "to": 11, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

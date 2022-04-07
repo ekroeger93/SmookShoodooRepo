@@ -1,0 +1,335 @@
+{ "frames": [
+   {
+    "filename": "TUTORIAL 0.ase",
+    "frame": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 1.ase",
+    "frame": { "x": 270, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 2.ase",
+    "frame": { "x": 540, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 3.ase",
+    "frame": { "x": 810, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 4.ase",
+    "frame": { "x": 1080, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 5.ase",
+    "frame": { "x": 1350, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 6.ase",
+    "frame": { "x": 1620, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 7.ase",
+    "frame": { "x": 1890, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 8.ase",
+    "frame": { "x": 2160, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 9.ase",
+    "frame": { "x": 2430, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 10.ase",
+    "frame": { "x": 2700, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 11.ase",
+    "frame": { "x": 2970, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 12.ase",
+    "frame": { "x": 3240, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 13.ase",
+    "frame": { "x": 3510, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 14.ase",
+    "frame": { "x": 3780, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 15.ase",
+    "frame": { "x": 4050, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 16.ase",
+    "frame": { "x": 4320, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 17.ase",
+    "frame": { "x": 4590, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 18.ase",
+    "frame": { "x": 4860, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 19.ase",
+    "frame": { "x": 5130, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 20.ase",
+    "frame": { "x": 5400, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 21.ase",
+    "frame": { "x": 5670, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 22.ase",
+    "frame": { "x": 5940, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 23.ase",
+    "frame": { "x": 6210, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 24.ase",
+    "frame": { "x": 6480, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 25.ase",
+    "frame": { "x": 6750, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 26.ase",
+    "frame": { "x": 7020, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 27.ase",
+    "frame": { "x": 7290, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 28.ase",
+    "frame": { "x": 7560, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 29.ase",
+    "frame": { "x": 7830, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 30.ase",
+    "frame": { "x": 8100, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 31.ase",
+    "frame": { "x": 8370, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 32.ase",
+    "frame": { "x": 8640, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 33.ase",
+    "frame": { "x": 8910, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   },
+   {
+    "filename": "TUTORIAL 34.ase",
+    "frame": { "x": 9180, "y": 0, "w": 270, "h": 150 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 270, "h": 150 },
+    "sourceSize": { "w": 270, "h": 150 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.15-x64",
+  "image": "TUTORIAL.png",
+  "format": "RGBA8888",
+  "size": { "w": 9450, "h": 150 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 3", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

@@ -1,0 +1,2523 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" 
+  content="width=device-width, initial-scale=1.0, user-scalable=no">
+<head>
+    <script src="dist/phaser-arcade-physics.js"></script>
+    <script src="scripts/three.min.js"></script>
+    <script src="scripts/GLTFLoader.js"></script>
+<!--
+    <script type="text/javascript" src="scripts/dat.gui.js">
+    </script>
+-->
+    
+  <script src="entities/PunchBulletLeft.js"></script>
+  <script src="entities/PunchBulletRight.js"></script>
+<script src="entities/PunchShieldRight.js"></script>   
+    
+    
+    <script src="entities/AbstractEnemy.js"></script>
+    <script src="entities/Enemy1.js"></script>
+   <script src="entities/Enemy2.js"></script>
+   <script src="entities/Enemy3.js"></script>
+   <script src="entities/Enemy4.js"></script>
+   <script src="entities/Enemy5.js"></script>
+   <script src="entities/Enemy6.js"></script>
+    <script src="entities/Enemy9.js"></script>
+    <script src="entities/BalloonGuy1.js"></script>
+    <script src="entities/Boss.js"></script>
+    
+   <script src="entities/Player.js"></script>
+    <!--    <script src="//cdn.jsdelivr.net/npm/phaser@3.19.0/dist/phaser-facebook-instant-games.min.js"></script>-->
+</head>
+<style>
+ 
+         html, body {margin: 0; height: 100%;overflow: hidden}
+
+@media only screen and (max-device-width : 640px) {
+    
+    .page-header {
+    @supports (-webkit-appearance: none) {
+        .os-android & {
+            min-height: calc(100vh - 56px);
+        }
+    }
+}
+    
+
+    
+    html {
+ 
+  overflow: hidden;
+  width: 100%;
+}
+    
+    body{
+  display: block;
+
+   background: #5d1d08;
+/*  overflow-y: hidden;*/
+/*         height: 0px;*/
+ 
+/*    overflow-y: unset;*/
+        margin-left: 1vw;
+        margin-right: 1vw;
+      
+
+        
+        
+    }
+    
+        .flex {
+       position: fixed;
+
+      
+}
+    
+.flex-child {
+   position: relative;
+    width: 47vw;
+    height: 25vw;	background-color:#e98c29;
+    border-radius: 20px;
+ box-shadow: 0px 6px 2px 1px rgba(0, 0, 255, .2);
+}
+    
+    .spacer{
+        position: fixed;
+        
+    }
+    
+    
+/*
+      footer {
+        
+            width: 5vw;
+            bottom: 0;
+            position: fixed;
+             color:white
+        }
+        
+*/
+    
+    
+     canvas{
+
+display: block;
+margin-bottom: 10px;
+margin-top: 0 !important;
+		}
+    
+    
+
+    
+    }
+/*    		*/
+
+    canvas{
+display: flex;
+margin-top: 0 !important;
+
+
+		}
+    
+    
+          footer {
+        
+            width: 20vw;
+            bottom: 0;
+            position: fixed;
+             color:white;
+             
+              
+            
+        }
+    
+    
+    
+    #container{
+        outline-style:solid;  
+         border-color: beige;
+    outline-width: 5px;
+  width:60vw;
+    }    
+    
+
+        
+          #button{
+     position: relative;
+  	background-color:#e98c29;
+/*    border-radius: 20px;*/
+/* box-shadow: 0px 6px 2px 1px rgba(0, 0, 255, .2);*/
+  
+          background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+
+  cursor: pointer;
+    }
+
+    
+
+    
+    
+    
+    
+    </style>
+    
+
+          
+    
+    
+<body>
+
+  
+     <canvas id="canvasGame"></canvas>
+ 
+
+    
+
+<div class="spacer">
+ 
+<div class="flex">
+    <input type="button" class="flex-child" id="left_button"   value="&larr;">
+    <input type="button" class="flex-child" id="right_button"  value="&rarr;">
+</div></div>
+
+    
+
+
+    
+    
+</body>
+    <footer>
+    
+<div id=button onclick="myFunction()" value="how to play">how to play  </div>
+   
+
+    
+    
+    </footer>
+
+    
+      <script>
+
+
+
+function myFunction() {
+  var myWindow = window.open("assets/tut.html");
+}
+        
+        
+
+/*
+
+-make it short but memorable
+-compact the content focus paticularly on the Boss
+-reuse enemies (animations just change color and stats) 
+-reduce to 12 rounds 
+-reduce number of enemies limit to 20 or 15
+-try to aim for a 15 or 20 min game 
+-game average 8 mins of 12 rounds
+
+
+
+
+ 
+
+    
+
+
+[goal of today]
+
+    
+
+
+
+CODE REFINEMENT!
+
+[END]
+
+
+
+
+
+
+
+*/
+
+
+
+
+//class touchButton extends Phaser.GameObjects.Image {
+//constructor(scene, x, y, texture)
+//{
+//    super(scene, x, y, texture);
+// 
+//        this.setTexture('player0');
+//    this.setInteractive();
+//    this.isDown = false;
+//
+//    this.onPressed = null;
+//    this.onReleased = null;
+//
+//    this.on('pointerdown', () => { this.isDown = true; this.onPressed(); });
+//    this.on('pointerup', () => { this.pointerUp(); });
+//    this.on('pointerout', () => { this.pointerUp(); });
+//}
+//
+//pointerUp()
+//{
+//    this.isDown = false;
+//    if(this.onReleased != null) this.onReleased();
+//}
+// preUpdate(time, delta) {
+//     
+//      this.isDown = false;
+//    if(this.onReleased != null) this.onReleased();
+//     
+// }
+//    
+//    
+//}
+//        
+//        
+//        
+        var config = {
+            type: Phaser.WEBGL,
+            width: 800,
+            height: 600,
+            canvas : document.getElementById('canvasGame'),
+            canvasStyle:'     border: solid #c4af95; border-radius: 15px; border-width:6px;',
+              
+            
+//            fps: {
+//   // target: 30,
+//    forceSetTimeOut: false
+//},
+            
+            
+            physics: {    
+                default: 'arcade',
+                arcade: { //debug:true,
+                    gravity: {
+                        y: 300
+                    }
+                   
+                }
+            },
+            
+            
+
+            
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            },
+            
+            scale: {
+                mode: Phaser.Scale.FIT,
+                autoCenter: Phaser.Scale.CENTER_BOTH
+            },
+
+
+        };
+
+        
+//                var config2 = {
+//            type: Phaser.WEBGL,
+//            width: 800,
+//            height: 600,
+//            
+//       
+//            scene: {
+//                preload: preload2,
+//                create: create2,
+//                update: update2
+//            },
+//            
+//            scale: {
+//                mode: Phaser.Scale.FIT,
+//                autoCenter: Phaser.Scale.CENTER_BOTH
+//            },
+//
+//
+//        };
+        
+        var scene3d;
+        var mesh;
+        var renderer;
+        
+        game = new Phaser.Game(config);
+   //     menu = new Phaser.Game(config2);
+
+        
+         
+
+        function preload() {
+            
+            this.displayMenu=true;
+            
+            
+            this.attackSpeed = 600;
+            this.comboHit=0;
+            this.comboC=0;
+            this.seqCount=0;
+            this.comboCount=0;
+            this.countDownE=-1;
+            this.comboNxt=0;
+            this.nxtSeq=false;
+            this.player;
+            
+            this.eCount=0;
+            this.roundNum=11;
+            this.rightList=[[0],[0]];
+            this.leftList=[[0],[0]];
+              
+            this.halfPoint = config.width / 2;
+    
+            this.leftId=-1;  this.rightId=-1;
+            
+            this.haltLeft =false; this.haltRight =false;
+          
+            this.scoreLabel=null;
+            this.countDown=null;
+            
+            this.points=0;
+            this.failedRnd=false;
+            
+            this.bossRound=false;
+            this.placeHolder=null;
+            
+            this.punchSheild=null;
+            this.vid=null;
+        
+            this.pullMenu=null;
+            
+            
+           this.eSpawnMgt = [
+               
+               
+               //MAY REVISE TO 12 ROUNDS AND CHANGE MUSIC + LEVEL AT 6
+
+            [ //round num 1
+               
+            ],
+
+            [ //round num 1 // levelOne
+              // ["balloon1",65], 
+                   //   ["balloon1",65],
+                ["enemy1", 10], ["enemy2", 5]
+           //  ["boss", 1],
+            ],
+               
+
+            [ //round num 2
+                ["enemy1", 10], ["enemy2", 10],  ["enemy3", 5],
+            ],
+            
+            
+            [ //round num 3 // levelBounus
+                ["balloon1",60],
+                
+            
+            ],      
+            
+            [ //round num 4 // levelTwo
+                
+                ["enemy5", 10],["enemy2", 10]
+            
+            ],   
+            
+
+            [ //round num 5
+                ["enemy5", 15], ["enemy2", 5],["enemy3", 5]
+            
+            ],
+              
+            [ //round num 6 //levelThree
+                ["enemy5", 5], ["enemy6", 10],["enemy3", 10]
+            
+            ],
+                
+             
+            [     //round num 7
+                ["enemy5", 5],["enemy6", 10],["enemy3", 5],["enemy4", 3],
+              
+            
+            ],
+               
+            [     //round num 8 //LevelFour
+                ["enemy6", 10],["enemy3", 5], ["enemy4", 5],
+                
+                
+                
+            ],
+                
+            [     //round num 9
+                
+                ["enemy3", 10],["enemy4", 10],
+               
+            ],
+               
+            [     //round num 10 //LevelFive
+                ["enemy9", 12],
+               
+            ],
+               
+            
+            [     //round num 11 
+                ["enemy9", 6], ["enemy4", 3], ["enemy6", 10],
+               
+            ],
+               
+            [     //round num 12
+                
+               ["boss", 1],
+               
+            ],
+            
+            [     //round num 14
+                
+               ["END", 1],
+               
+            ],
+
+        ];
+           this.eArray = [];
+            this.pArrayLeft=[];
+            this.pArrayRight=[];
+            
+            this.configTxt;
+            
+            
+            this.hitType = {
+                LEFT : {MISS:false,HIT:false,CRIT:false,PENALTY:false},
+                RIGHT:{MISS:false,HIT:false,CRIT:false,PENALTY:false}
+            }
+            
+
+            this.load.audio("slap1", 'assets/sound/slap1.ogg');
+            this.load.audio("slap2", 'assets/sound/slap2.ogg');
+            this.load.audio("slap3", 'assets/sound/slap3.ogg');
+            this.load.audio("slap4", 'assets/sound/slap4.ogg');
+            this.load.audio("start", 'assets/sound/startRound.ogg');
+            
+            
+           this.load.audio("levelOne", 'assets/sound/levelOne.ogg');
+           this.load.audio("levelTwo", 'assets/sound/levelTwo.ogg');
+           this.load.audio("levelThree", 'assets/sound/levelThree.ogg');
+           this.load.audio("levelFour", 'assets/sound/levelFour.ogg');
+           this.load.audio("grimMembers", 'assets/sound/grimCreeps.ogg');
+           this.load.audio("bounusRnd", 'assets/sound/bounusRound.ogg');
+           this.load.audio("bossMusic", 'assets/sound/bossMusic.ogg');
+           // this.load.audio("music", 'assets/sound/soundTrack8.wav');
+            
+          //  this.load.scenePlugin('Camera3DPlugin', 'plugins/camera3d.min.js', 'Camera3DPlugin', 'cameras3d');
+
+          //  this.load.atlas('attackFlare', 'assets/images/player0/playerAttackFlare.png', 'assets/images/player0/playerAttackFlare.json');
+            
+            this.load.atlas('hitFx', 'assets/images/player0/hitFxA.png', 'assets/images/player0/hitFx.json');
+            this.load.atlas('bossHitFx', 'assets/images/thugBoss/bossAttackFx.png', 'assets/images/thugBoss/bossAttackFx.json');
+
+
+            this.load.atlas('player0', 'assets/images/player0/playerA.png', 'assets/images/player0/playerA.json');
+
+            this.load.atlas('thugA', 'assets/images/thugA/thugA.png', 'assets/images/thugA/thugA.json');
+            this.load.atlas('thugB', 'assets/images/thugB/thugB.png', 'assets/images/thugB/thugB.json');
+            this.load.atlas('thugC', 'assets/images/thugC/thugC.png', 'assets/images/thugC/thugC.json');
+            this.load.atlas('thugD', 'assets/images/thugD/thugD.png', 'assets/images/thugD/thugD.json'); 
+            this.load.atlas('thugE', 'assets/images/thugE/thugE.png', 'assets/images/thugE/thugE.json');
+            
+            this.load.atlas('thugAA', 'assets/images/thugAA/thugAA.png', 'assets/images/thugAA/thugAA.json');
+            this.load.atlas('thugBB', 'assets/images/thugBB/thugBB.png', 'assets/images/thugBB/thugBB.json');
+            
+            this.load.atlas('boss', 'assets/images/thugBoss/boss.png', 'assets/images/thugBoss/boss1.json');
+            
+            this.load.atlas('balloon0', 'assets/images/baloon/balloonGuy0.png','assets/images/baloon/balloonGuy0.json' )
+            
+            
+        //    this.load.image('platform', 'assets/images/platform.png');
+       //     this.load.image('hitBox', 'assets/images/hitBox.png');
+            this.load.image('bossSheild', 'assets/images/guard.png');
+//            
+//            this.load.image('A6Hit', 'assets/images/thugA/thug6.png');
+//            this.load.image('A7Hit', 'assets/images/thugA/thug7.png');
+//            this.load.image('A8Hit', 'assets/images/thugA/thug8.png');
+//            this.load.image('A9Hit', 'assets/images/thugA/thug9.png');
+            
+            this.load.image('heart','assets/images/player0/heart.png')
+          //  this.load.image('warning','assets/images/player0/warning.png')
+         //   this.load.image('guard','assets/images/player0/guard.png')
+            
+
+        //    this.load.image('myfont', 'assets/images/font/knight3-sheet.png');
+            this.load.image('myfont', 'assets/images/font/numFont.png');
+            this.load.image('statusFont', 'assets/images/font/statusFont.png');
+
+            this.load.image('spark', 'assets/images/testParticle.png');
+            this.load.image('cspark', 'assets/images/critPart.png');
+            this.load.image('punchBulletL1', 'assets/images/punchBulletL1.png');
+            this.load.image('punchBulletL2', 'assets/images/punchBulletL2.png');
+            this.load.image('punchBulletR1', 'assets/images/punchBulletR1.png');
+            this.load.image('punchBulletR2', 'assets/images/punchBulletR2.png');
+                  this.load.image('punchBulletL3', 'assets/images/punchBulletL3.png');
+            this.load.image('punchBulletR3', 'assets/images/punchBulletR3.png');
+            
+            
+            this.load.image('BossBulletL1', 'assets/images/BossBulletL1.png');
+            this.load.image('BossBulletL1Dead', 'assets/images/BossBulletL1Dead.png');
+            
+            // this.load.atlas('atlas', 'assets/atlas/megaset-1.png', 'assets/atlas/megaset-1.json');
+            /*
+              this.add.image(400, 200, 'atlas', 'titan-mech');
+    this.add.image(400, 400, 'atlas', 'ship');
+    this.add.image(400, 600, 'atlas', 'supercars-parsec');
+            */
+            this.load.image('titleMenu', 'assets/images/titleMenu.png')
+            this.load.image('endMenu', 'assets/images/endGameMenu.png')
+            this.load.image('menuButton','assets/images/menuButton.png');
+            this.load.image('bossMenu','assets/images/bossGameMenu.png')
+            
+        
+           // console.log(this.load);
+          //   this.load.video('test', 'assets/test.mp4');
+       
+// this.load.video('test', 'assets/test.mp4', 'loadeddata', true, true);
+ //this.load.video('gameTut', 'assets/test.mp4', 'loadeddata', true, true);
+           //   this.load.spritesheet('mummy', 'assets/animations/mummy37x45.png', { frameWidth: 37, frameHeight: 45 });
+         //   this.load.spritesheet('tutorial', 'assets/TUTORIAL.png',{ frameWidth: 270, frameHeight: 150 });
+ this.load.video('gameTut', 'assets/GameTutorial0.mp4', 'loadeddata', false, true);
+  //  this.load.video('wormhole', 'assets/video/wormhole.mp4', 'loadeddata', false, true);
+        
+            
+            
+            
+            
+//this.load.on('progress', function (value) {
+//    //console.log(value);
+//});
+//            
+//this.load.on('fileprogress', function (file) {
+//   // console.log(file.src);
+//});
+// 
+//this.load.on('complete', function () {
+// //   console.log('complete');
+//});
+//            
+
+var progressBar = this.add.graphics();
+var progressBox = this.add.graphics();
+progressBox.fillStyle(0x66ff99, 0.7);
+progressBox.fillRect(240, 270, 320, 50);   
+            
+
+this.load.on('progress', function (value) {
+  //  console.log(value);
+    progressBar.clear();
+    progressBar.fillStyle(0xffffff, 1);
+    progressBar.fillRect(250, 280, 300 * value, 30);
+});
+            
+            
+            
+            
+
+var width = this.cameras.main.width;
+var height = this.cameras.main.height;
+var loadingText = this.make.text({
+    x: width / 2,
+    y: height / 2 - 50,
+    text: 'Loading...',
+    style: {
+        font: '20px monospace',
+        fill: '#ffffff'
+    }
+});
+loadingText.setOrigin(0.5, 0.5);            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+
+        
+        var loader;
+                   function handle_load(gltf) {
+
+                mesh = gltf.scene;
+
+                     //  console.log(mesh);
+               // mesh.children[0].material = new THREE.MeshLambertMaterial();
+                scene3d.add(mesh);
+                       
+                       gltf.scene.traverse( function ( child ) {
+            	if ( child.isMesh ) {
+                    child.material.emissive =  child.material.color;
+					child.material.emissiveMap = child.material.map ;
+                    child.material.alphaTest = 0.5
+            	}
+            } );
+ 
+                       
+                       
+                       
+            }
+        
+          
+          
+          
+        
+
+        function create() {
+
+   // var vid=  this.add.video(game.canvas.width,game.canvas.height, 'test');
+    
+            //var tutAnim1= this.add.sprite(300, 200, 'tutorial');
+            
+        
+   
+     this.configTxt = {
+        image: 'myfont', 
+        chars: Phaser.GameObjects.RetroFont.TEXT_SET8,
+       width: 74,
+        height: 85,  
+         charsPerRow: 10,
+
+        spacing: { x: 0, y: 0 }
+    };
+     this.configStatus = {
+        image: 'statusFont', 
+        chars: Phaser.GameObjects.RetroFont.TEXT_SET8,
+       width: 28,
+        height: 36,  
+         charsPerRow: 10,
+
+        spacing: { x: 0, y: 0 }
+    };    
+            
+            
+            
+            
+            
+            this.slap1Sound = this.sound.add("slap1");
+            this.slap2Sound = this.sound.add("slap2");
+            this.slap3Sound = this.sound.add("slap3");
+            this.slap4Sound = this.sound.add("slap4");
+            this.startRound = this.sound.add("start");
+            this.music= new Array(10);
+            this.mIndex=0; 
+            this.music[0] = this.sound.add("levelOne");
+            this.music[1] = this.sound.add("bounusRnd");
+            this.music[2] = this.sound.add("levelTwo");
+            this.music[3] = this.sound.add("levelThree");
+            this.music[4] = this.sound.add("levelFour");
+            this.music[5] = this.sound.add("grimMembers");
+            this.music[6] = this.sound.add("bossMusic");
+          
+            
+            this.musicConfig={
+                mute:false,
+                volume:1,
+                rate:1,
+                detune:0,
+                seek:0,
+                loop:true,
+                delay:0,
+                
+                
+            }
+            
+            
+            
+           //          this.mainMenu;
+         //   this.mainMenu= new  Phaser.Scene('demoC')
+      
+            yUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I);
+            yDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+            xUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+            xDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+            zUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.U);
+            zDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
+
+
+            y2Up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_EIGHT);
+            y2Down = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_TWO);
+            x2Up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SIX);
+            x2Down = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FOUR);
+            z2Up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN);
+            z2Down = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_NINE);
+
+            //    
+
+
+            
+
+            camera = new THREE.PerspectiveCamera(28, config.width / config.height, .12, 1000);
+
+
+            scene3d = new THREE.Scene();
+
+
+            camera.position.x = 1
+            camera.position.y = -0.04
+            camera.position.z = 5.4
+
+            scene3d.position.y = 0;
+            scene3d.rotation.y = -1.56;
+            scene3d.rotation.z = -0.27;
+
+
+            let view = this.add.extern();
+
+
+             loader = new THREE.GLTFLoader();
+
+     
+            loader.load('levelOne.glb', handle_load);
+
+            let renderer = new THREE.WebGLRenderer({
+                canvas: this.sys.game.canvas,
+                context: this.sys.game.context,
+                antialias: false,alpha: true
+            })
+
+            view.render = () => {
+
+                renderer.state.reset();
+                renderer.render(scene3d, camera);
+                renderer.setClearColor(0x000000, 0);
+                renderer.gammaOutput = true
+                
+
+
+                
+            };
+
+            
+
+      //   var texture= this.load.image('texture','assets/images/player0/guard.png')
+
+            
+            
+         
+
+         
+         
+ hitLC = new Phaser.Geom.Circle(250, 650, 40);
+ hitLpoint = new Phaser.Geom.Rectangle(400, 300, 1, 1);    
+ 
+ hitRC = new Phaser.Geom.Circle(550, 650, 40);
+ hitRpoint = new Phaser.Geom.Rectangle(400, 300, 1, 1);                
+            
+vBar={shape:null,x:400,y:700,w:200,h:30}            
+            
+ vBar.shape= new Phaser.Geom.Rectangle(vBar.x-(vBar.w/2), vBar.y, vBar.w, vBar.h);    
+   
+         this.leftHitBoxBar; this.rightHitBoxBar
+            
+this.leftHitBoxBar={SUM:0,intialX:150,SIZE:200,
+                    outerBound:null
+                    ,hitBar1:null
+                    ,criticalBar:null
+                    ,hitBar2:null
+                    ,penaltyBar:null
+                   
+                   }      
+            
+    this.barYPos;
+    this.barYPos=630
+    this.barVert;
+            this.barVert=60;
+            
+this.leftHitBoxBar.outerBound=   new Phaser.Geom.Rectangle(200,  this.barYPos, this.leftHitBoxBar.SIZE/5, this.barVert);     
+this.leftHitBoxBar.hitBar1=      new Phaser.Geom.Rectangle(250,  this.barYPos, this.leftHitBoxBar.SIZE/5, this.barVert);     
+this.leftHitBoxBar.criticalBar=  new Phaser.Geom.Rectangle(300,  this.barYPos, this.leftHitBoxBar.SIZE/5, this.barVert);     
+this.leftHitBoxBar.hitBar2=      new Phaser.Geom.Rectangle(350,  this.barYPos, this.leftHitBoxBar.SIZE/5, this.barVert);     
+this.leftHitBoxBar.penaltyBar=   new Phaser.Geom.Rectangle(400,  this.barYPos, this.leftHitBoxBar.SIZE/5, this.barVert);     
+        
+            
+            
+   this.leftHitBoxBar.outerBound.offset=5;
+   this.leftHitBoxBar.hitBar1.offset=3;
+   this.leftHitBoxBar.criticalBar.offset=10;
+   this.leftHitBoxBar.hitBar2.offset=5;
+   this.leftHitBoxBar.penaltyBar.offset=7;
+        
+            
+                 this.leftBarData;
+        this.leftBarData=[];
+        this.leftBarPartData;
+        this.leftBarPartData=[];
+            
+            
+this.rightHitBoxBar={SUM:0,intialX:550,SIZE:200,
+                    outerBound:null
+                    ,hitBar1:null
+                    ,criticalBar:null
+                    ,hitBar2:null
+                    ,penaltyBar:null
+                   
+                   }      
+this.rightHitBoxBar.outerBound=   new Phaser.Geom.Rectangle(500,  this.barYPos, this.rightHitBoxBar.SIZE/5, this.barVert);     
+this.rightHitBoxBar.hitBar1=      new Phaser.Geom.Rectangle(550,  this.barYPos, this.rightHitBoxBar.SIZE/5, this.barVert);     
+this.rightHitBoxBar.criticalBar=  new Phaser.Geom.Rectangle(600,  this.barYPos, this.rightHitBoxBar.SIZE/5, this.barVert);     
+this.rightHitBoxBar.hitBar2=      new Phaser.Geom.Rectangle(650,  this.barYPos, this.rightHitBoxBar.SIZE/5, this.barVert);     
+this.rightHitBoxBar.penaltyBar=   new Phaser.Geom.Rectangle(700,  this.barYPos, this.rightHitBoxBar.SIZE/5, this.barVert);     
+        
+            
+            
+   this.rightHitBoxBar.outerBound.offset=5;
+   this.rightHitBoxBar.hitBar1.offset=3;
+   this.rightHitBoxBar.criticalBar.offset=10;
+   this.rightHitBoxBar.hitBar2.offset=5;
+   this.rightHitBoxBar.penaltyBar.offset=7;
+            
+            
+        this.rightBarData;
+        this.rightBarData=[];
+        this.rightBarPartData;
+        this.rightBarPartData=[];
+            
+            
+    graphics = this.add.graphics({ fillStyle: { width: 10, color: 0x00ff00 } });
+    graphics.fillCircleShape(hitLC);
+    graphics.fillCircleShape(hitRC);
+    graphics.fillRectShape(vBar);
+
+    hitLC.diameter = hitLC.radius;
+    hitRC.diameter = hitRC.radius;
+
+    hitLC.radius = 30;
+    hitRC.radius = 30;
+
+            
+  hitLLine = new Phaser.Geom.Line(400, 300,400, 300);
+  Phaser.Geom.Line.CenterOn(hitLLine, hitLpoint.x, hitLpoint.y);
+  hitLLines = [];
+     
+  hitRLine = new Phaser.Geom.Line(400, 300,400, 300);
+  Phaser.Geom.Line.CenterOn(hitRLine, hitRpoint.x, hitRpoint.y);
+  hitRLines = [];            
+            
+ 
+ roundNum = 0;
+
+
+    menuGraphics =this.add.graphics({ fillStyle: { width: 10, color: 0x00ff00 } });
+    menu = new Phaser.Geom.Rectangle(200, 200, 500, 500); 
+
+
+            
+            
+            
+         this.mainMenu;
+         this.mainMenu = this.add.image(700, 500, 'titleMenu');
+         this.mainMenu.setDepth(1);
+            
+            this.mainMenu.scale=1.5;
+            this.mainMenu.x=400;
+            this.mainMenu.y=0;     
+            
+            
+            this.menuButton;
+                
+            this.menuButton=this.add.image(400, 670,'menuButton').setInteractive();
+     
+            this.menuButton.on('pointerup', startGame, this);
+            this.menuButton.setDepth(2); 
+
+
+            var time = this.time;
+
+            coolDown = false;
+
+            this.physics.world.setBoundsCollision(false, false, false, true);
+
+            player = this.physics.add.existing(new Player(this, this.halfPoint, 500, ));
+            this.placeHolder= this.add.existing(new PlaceHolder(this,400,470) ); //new PlaceHolder(400,478);
+            
+            this.player=player;
+            player.body.collideWorldBounds = true;
+            
+            
+            
+             this.PunchShieldRight = function(param1){
+                 spawnPunchShieldRight(param1);
+             }
+            
+            
+             
+     this.countDownE=  this.time.addEvent({
+                args:[],
+                delay: 30000,
+                callback: killEnemies,
+                callbackScope: this,
+                loop: true,
+                timeScale: 1,
+            });
+     this.countDownE.paused=true;
+             
+             
+             
+    this.punchLRateT;
+    this.punchLRateT=  this.time.addEvent({
+                args:[],
+                delay: 400,
+                callback: spawnLeftPunch,
+                callbackScope: this,
+                loop: true,
+                timeScale: 1,
+            });
+    this.punchLRateT.paused=true;
+            
+    this.punchRRateT;
+    this.punchRRateT=  this.time.addEvent({
+                 args:[],
+                delay: 400,
+                callback: spawnRightPunch,
+                callbackScope: this,
+                loop: true,
+                timeScale: 1,
+            });
+    this.punchRRateT.paused=true;
+            
+            
+            
+                   penStamTime = this.time.addEvent({
+                delay: 1400,
+                callback: player.staminaPenalty,
+                callbackScope: this,
+                loop: true,
+                timeScale: 1,
+            });
+
+            
+            
+            comboTimer= this.time.addEvent({
+                delay: 400,
+                callback: player.comboExpired,
+                callbackScope: this,
+                loop: true,
+                  timeScale: 1, });
+            comboTimer.paused=true;
+            
+            resVitalTime = this.time.addEvent({
+                delay: 200,
+                callback: player.resVital,
+                callbackScope: this,
+                loop: true,
+                timeScale: 1,
+            });
+resVitalTime.paused=true;
+            
+            
+            player.hitCoolDown= this.time.addEvent({
+                delay: 400,
+                callback: player.playerHitRec,
+                callbackScope: this,
+                loop: true,
+                timeScale: 1,
+            });
+player.hitCoolDown.paused=true;
+            
+            
+            text = this.add.text(player.x - 50, player.y - 140);
+            text1 = this.add.text(player.x - 50, player.y - 200);
+
+
+
+spawnEnemies() ;
+
+            
+
+{
+           
+
+
+            this.anims.create({
+                key: 'hitFx1',
+                // frameRate:1.666,
+                duration: 300,
+                frames: this.anims.generateFrameNames("hitFx", {
+                    prefix: "hitFx",
+                    suffix: ".png",
+                    frames: [1, 2, 3, 4, 5]
+                }),
+                repeat: -1
+            })
+
+    
+           this.anims.create({
+                key: 'bossFx1',
+                // frameRate:1.666,
+                duration: 300,
+                frames: this.anims.generateFrameNames("bossHitFx", {
+                    prefix: "bossAttackFx ",
+                    suffix: ".ase",
+                    frames: [0, 1,2, 3]
+                }),
+                repeat: -1
+            });
+    
+    
+               this.anims.create({
+                key: 'bossFx2',
+                // frameRate:1.666,
+                duration: 300,
+                frames: this.anims.generateFrameNames("bossHitFx", {
+                    prefix: "bossAttackFx ",
+                    suffix: ".ase",
+                    frames: [4, 5, 6, 7]
+                }),
+                repeat: -1
+            });
+    
+    
+               this.anims.create({
+                key: 'bossFx3',
+                // frameRate:1.666,
+                duration: 300,
+                frames: this.anims.generateFrameNames("bossHitFx", {
+                    prefix: "bossAttackFx ",
+                    suffix: ".ase",
+                    frames: [8, 9, 10, 11]
+                }),
+                repeat: -1
+            });
+
+        }
+
+
+            cursors = this.input.keyboard.createCursorKeys();
+            left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+            right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
+
+            this.cameras.main.setZoom(1);
+
+            cam = this.cameras.main;
+
+
+            
+            player.anims.play('mistaIdle', true);
+
+
+         keyCombo = this.input.keyboard.createCombo(
+                [Phaser.Input.Keyboard.KeyCodes.RIGHT, Phaser.Input.Keyboard.KeyCodes.RIGHT], {
+
+                    resetOnWrongKey: true, //6000/1.6666667<=( (1/1000)/600 )=3500
+                    maxKeyDelay: scene.attackSpeed, //2400//attackSpeed-3500,//1.7142857142857142857142857142857‬ 2500 250each
+                    resetOnMatch: true,
+                    deleteOnMatch: true,
+                });
+
+            keyComboL = this.input.keyboard.createCombo(
+                [Phaser.Input.Keyboard.KeyCodes.LEFT, Phaser.Input.Keyboard.KeyCodes.LEFT], {
+
+                    resetOnWrongKey: true, //6000/1.6666667<=( (1/1000)/600 )=3500
+                    maxKeyDelay: scene.attackSpeed, //2400//attackSpeed-3500,//1.7142857142857142857142857142857‬ 2500 250each
+                    resetOnMatch: true,
+                    deleteOnMatch: true,
+                });
+
+            keyComboRL = this.input.keyboard.createCombo(
+                [Phaser.Input.Keyboard.KeyCodes.RIGHT, Phaser.Input.Keyboard.KeyCodes.LEFT], {
+
+                    resetOnWrongKey: true, //6000/1.6666667<=( (1/1000)/600 )=3500
+                    maxKeyDelay: scene.attackSpeed, //2400//attackSpeed-3500,//1.7142857142857142857142857142857‬ 2500 250each
+                    resetOnMatch: true,
+                    deleteOnMatch: true,
+                });
+
+            keyComboLR = this.input.keyboard.createCombo(
+                [Phaser.Input.Keyboard.KeyCodes.LEFT, Phaser.Input.Keyboard.KeyCodes.RIGHT], {
+
+                    resetOnWrongKey: true, //6000/1.6666667<=( (1/1000)/600 )=3500
+                    maxKeyDelay: scene.attackSpeed, //2400//attackSpeed-3500,//1.7142857142857142857142857142857‬ 2500 250each
+                    resetOnMatch: true,
+                    deleteOnMatch: true,
+                });
+
+
+            this.input.keyboard.on('keycombomatch', function(keyCombo) {
+                if (scene.seqCount == scene.comboCount || scene.comboCount == 0) scene.comboC = true;
+
+            });
+
+
+            this.input.keyboard.on('keycombomatch', function(keyComboL) {
+                if (scene.seqCount == scene.comboCount || scene.comboCount == 0) scene.comboC = true;
+
+            });
+
+
+            this.input.keyboard.on('keycombomatch', function(keyComboLR) {
+                if (scene.seqCount == scene.comboCount || scene.comboCount == 0) scene.comboC = true;
+
+            });
+            this.input.keyboard.on('keycombomatch', function(keyComboRL) {
+                if (scene.seqCount == scene.comboCount || scene.comboCount == 0) scene.comboC = true;
+
+            });
+
+
+            hitFxroup = this.add.group({
+                classType: Phaser.GameObjects.Sprite,
+                defaultKey: 'hitFx',
+                active: true,
+                maxSize: 10,
+
+            });
+
+            
+            
+                 hitBossFxGroup = this.add.group({
+                classType: Phaser.GameObjects.Sprite,
+                defaultKey: 'bossHitFx',
+                active: true,
+                maxSize: 10,
+
+            });
+
+            particles = this.add.particles('spark');
+
+            particles.createEmitter({
+                //        x: player.x+100,
+                //        y: player.y-159,
+                // speed: { min: -800, max: 800 },
+                speedX: {
+                    min: -300,
+                    max: 300,
+                    steps: 12
+                },
+                speedY: {
+                    min: -600,
+                    max: 100
+                },
+
+                //angle: { min: 0, max: 360 },
+                scale: {
+                    start: 1,
+                    end: 0
+                },
+
+                quantity: 4,
+
+                blendMode: 'SCREEN',
+                active: true,
+                lifespan: 500,
+                gravityY: 500,
+                on: false
+            });
+
+            critPart = this.add.particles('cspark');
+
+            critPart.createEmitter({
+
+                speedX: {
+                    min: -300,
+                    max: 300,
+                    steps: 12
+                },
+                speedY: {
+                    min: -600,
+                    max: 100
+                },
+
+                //angle: { min: 0, max: 360 },
+                scale: {
+                    start: 1,
+                    end: 0
+                },
+
+                quantity: 6,
+
+                blendMode: 'SCREEN',
+                active: true,
+                lifespan: 500,
+                gravityY: 500,
+                on: false
+            });
+
+            
+            
+            
+                this.pullMenu = this.tweens.add({
+        targets: this.mainMenu,
+        y: 400,
+        ease: 'Bounce.easeOut',
+        duration: 700,
+        yoyo: false,
+        repeat: 0,
+    });
+            
+            
+
+
+ this.cache.bitmapFont.add('myfont', Phaser.GameObjects.RetroFont.Parse(this, this.configTxt));
+ this.cache.bitmapFont.add('statusFont', Phaser.GameObjects.RetroFont.Parse(this, this.configStatus));
+
+            this.scoreLabel =   this.add.dynamicBitmapText(scene.halfPoint-60, 200, 'myfont', 'Game Title');
+            
+            this.countDown =   this.add.dynamicBitmapText(scene.halfPoint-160, 30, 'myfont', 'Game Title');
+             
+            enemyCount =   this.add.dynamicBitmapText(scene.halfPoint-260, 200, 'statusFont', 'Game Title');
+                    
+            roundNumStat= this.add.dynamicBitmapText(scene.halfPoint-350, 200, 'statusFont', 'Game Title');
+          
+            roundNumStat2= this.add.dynamicBitmapText(scene.halfPoint-65, 440, 'statusFont', 'Game Title');
+            
+            gamePoints= this.add.dynamicBitmapText(scene.halfPoint+220, 200, 'statusFont', 'Game Title');
+            
+            bossSheild= this.add.dynamicBitmapText(scene.halfPoint+220, 0, 'statusFont', 'Game Title');
+            
+            
+            countTimeE= this.add.dynamicBitmapText(scene.halfPoint-20, 640, 'statusFont', 'Game Title');
+
+
+    this.scoreLabel.setScale(3);
+    this.countDown.setScale(5);
+            
+
+
+            
+        }
+
+    
+          
+        function spawnLeftPunch(param1=1,param2=1){
+       // console.log(param1);
+             scene.add.existing(new PunchBulletLeft(scene,  400 , 500,param1,param2));
+                
+        }
+        
+        function spawnRightPunch(param1=1,param2=1){
+             scene.add.existing(new PunchBulletRight(scene,  800 , 500,param1,param2));
+        }
+                 
+        function spawnPunchShieldRight(param1=30){
+                   scene.add.existing(new PunchShieldRight(scene,  800 , 500,param1));
+            
+        }  
+
+        function getClosestLeft() {
+
+        scene.leftList =new Array(scene.eArray.length).fill(null).map(()=>new Array(1).fill(null)); // scene.eArray.length;
+            var index;
+
+            
+      
+                
+
+                for (j = 0; j < scene.eArray.length; j++) {
+
+
+                    if (scene.eArray[j].x < scene.halfPoint && scene.eArray[j].x !== null) {
+                        scene.leftList[j][0] = scene.eArray[j].x;
+                        scene.leftList[j][1] = scene.eArray[j].id
+                    } else {
+                        scene.leftList[j][1] = -1;                
+                        
+
+                    }
+
+
+
+                    
+                }
+
+            
+          
+            for(j = 0; j < scene.leftList.length; j++){
+                
+                                        if ( scene.leftList[j][1] === -1) {
+     scene.leftList.splice(j, 1); 
+   }
+            }
+            
+                
+
+            
+scene.leftList.sort(function(b,a) {
+    return a[0]-b[0]
+})
+            
+
+if(scene.leftList[0][1] !==-1){
+index=scene.leftList[0][1];}else{
+    scene.leftList.splice(0, 1);
+    index=scene.leftList[1][1];
+}
+
+//if(typeof index == 'undefined' || index==-1)index=index=scene.leftList[0][1];//WTF BUG FIX 
+
+            return index;
+
+
+
+
+
+
+        }
+
+        function getClosestRight() {
+
+
+         //   var list = [[],[]];
+        scene.rightList =new Array(scene.eArray.length).fill(null).map(()=>new Array(1).fill(null)); // scene.eArray.length;
+            var index;
+
+            
+      
+                
+
+                for (j = 0; j < scene.eArray.length; j++) {
+
+
+                    if (scene.eArray[j].x > scene.halfPoint && scene.eArray[j].x !== null) {
+                        scene.rightList[j][0] = scene.eArray[j].x;
+                        scene.rightList[j][1] = scene.eArray[j].id
+                    } else {
+                        scene.rightList[j][1] = -1;                
+                        
+
+                    }
+
+
+
+                    
+                }
+
+            
+          
+            for(j = 0; j < scene.rightList.length; j++){
+                
+                                        if ( scene.rightList[j][1] === -1) {
+     scene.rightList.splice(j, 1); 
+   }
+            }
+            
+                
+
+            
+scene.rightList.sort(function(b,a) {
+    return a[0]-b[0]
+}).reverse();;
+            
+
+if(scene.rightList[0][1] !==-1){
+index=scene.rightList[0][1];}else{
+    scene.rightList.splice(0, 1);
+}
+
+
+
+            return index;
+
+
+        }
+          
+          
+          
+          
+
+        function stopEnemies() {
+   scene = game.scene.scenes[0];
+            
+//if (scene.music[scene.mIndex].isPlaying==true)scene.music[scene.mIndex].stop();
+            
+for(k=0;k<scene.eArray.length;k++){ 
+             scene.eArray[k].stop = true;
+
+
+}
+
+
+        }
+
+        function resumeEnemies() {
+
+   scene = game.scene.scenes[0];
+            
+if (scene.music[scene.mIndex].isPlaying==false)scene.music[scene.mIndex].play();
+            
+for(k=0;k<scene.eArray.length;k++){ 
+             scene.eArray[k].stop = false;
+
+
+}
+        }
+
+        function spawnEnemies() {
+
+     scene = game.scene.scenes[0];
+
+          if( scene.failedRnd===false) roundNum += 1;
+               scene.failedRnd=false;
+            scene.eArray = [];
+       
+var rand= Math.ceil(1+Math.random() * 3);
+
+            function value_limit(val, min, max) {
+  return val < min ? min : (val > max ? max : val);
+}
+            
+                 rangeSpwn = 3000;//4000
+            
+                  if(   scene.eSpawnMgt[roundNum][0][0] != "boss" ) {
+                      
+                        for (i = 0, sum = 0; i < scene.eSpawnMgt[roundNum].length; i++) {
+
+
+                for (j = 0; j < scene.eSpawnMgt[roundNum][i][1]-2; j++) {
+
+                    sum++;
+                    despersion = ((100* 1 ) * j) * ((j % 2) + ((j % -2) - 1));//sort one side or other on odd or even j index
+                   
+             
+                       
+                    if((j % 2) ==1){
+                    seedEquat = value_limit((scene.halfPoint + (rangeSpwn) + despersion) + ((  ((rangeSpwn * 2 )) * (j % 2 * -1))),-4500,scene.halfPoint-500);}else
+                    { seedEquat = value_limit((scene.halfPoint + (rangeSpwn) + despersion) + ((  ((rangeSpwn * 2 )) * (j % 2 * -1))),scene.halfPoint+500,4500);   }
+                  
+                    
+                    
+                    ///seedEquat = (scene.halfPoint + (rangeSpwn) + despersion) + (((j % 2 * -1)));
+//(scene.halfPoint + rangeSpwn + despersion) + ((((rangeSpwn * 2)) * (j % 2 * -1)))
+
+                          if (scene.eSpawnMgt[roundNum][i][0] == "balloon1") {
+                     
+                              enemy = scene.physics.add.existing(new BalloonGuy1(scene,  seedEquat , 500));
+
+                    }
+                    
+                    
+
+                    if (scene.eSpawnMgt[roundNum][i][0] == "enemy1") {
+                        enemy = scene.physics.add.existing(new Enemy1(scene,  seedEquat , 500));
+
+                    }
+                    if (scene.eSpawnMgt[roundNum][i][0] == "enemy2")
+                        enemy = scene.physics.add.existing(new Enemy2(scene,  seedEquat , 500));
+
+
+                    if (scene.eSpawnMgt[roundNum][i][0] == "enemy3")
+                        enemy = scene.physics.add.existing(new Enemy3(  scene,  seedEquat , 500 ));
+
+                    
+                    if (scene.eSpawnMgt[roundNum][i][0] == "enemy4")
+                        enemy = scene.physics.add.existing(new Enemy4(  scene,  seedEquat , 500 ));
+                    
+                    if (scene.eSpawnMgt[roundNum][i][0] == "enemy5")
+                        enemy = scene.physics.add.existing(new Enemy5(  scene,  seedEquat , 500 ));
+                           
+                    if (scene.eSpawnMgt[roundNum][i][0] == "enemy6")
+                        enemy = scene.physics.add.existing(new Enemy6(  scene,  seedEquat , 500 ));
+                    
+                    if (scene.eSpawnMgt[roundNum][i][0] == "enemy9")
+                        enemy = scene.physics.add.existing(new Enemy9(  scene,  seedEquat , 500 ));
+                    
+                    scene.eArray[sum - 1] = enemy;
+                   enemy.id=sum-1;
+                    // scene.eArray[sum - 1].id = sum;//j*(i+1);
+
+
+                 //   scene.physics.add.overlap(hitBoxL, enemy, enemy.hitEnemyL, null, scene)
+                //    scene.physics.add.overlap(hitBoxR, enemy, enemy.hitEnemyR, null, scene)
+                
+                   // game.config.physics.arcade
+                    
+              //      game.physics.enable(enemy, Phaser.Physics.ARCADE);
+                //    game.physics.arcade.collide(enemy,enemy);
+                    
+                    
+               
+                    scene.physics.add.overlap(enemy, scene.eArray[sum - 3], pushE, null, scene)
+                    scene.physics.add.overlap(enemy, scene.eArray[sum - 2], pushE, null, scene)
+                    scene.physics.add.overlap(enemy, enemy, pushE, null, scene)
+                    
+                    for(k=0;k<scene.eArray.length;k++){    scene.physics.add.overlap(enemy, scene.eArray[k] , pushE, null, scene) }
+                    
+
+                    
+                    
+                    
+                }
+                scene.eCount = scene.eArray.length;
+
+                            
+                            
+                            
+            }
+                            
+                            
+                               scene.bossRound=false;
+                            
+                        }else {   
+                            
+                            scene.bossRound=true;
+                            enemy = scene.physics.add.existing(new Boss(scene,  scene.halfPoint+250 , 500));
+                    
+                          scene.eArray[0] = enemy;
+                          enemy.id=0
+                         scene.eCount=1;}
+//                   }else{ 
+//                       scene.rightId=-1 ; scene.leftId=-1 ;
+//                       scene.eArray =[];  // scene.bossRound=true;
+//                         scene.mainMenu = scene.add.image(700, 500, 'endMenu');
+//                   }        
+            
+//scene.leftId=getClosestLeft(); 
+// scene.rightId=getClosestRight();; //else{scene.rightId=getClosestRight();}
+////else{scene.leftId=getClosestLeft()}
+    
+         
+
+        }
+        
+function killEnemies(){
+               scene = game.scene.scenes[0];
+                   scene.punchRRateT.paused=true; 
+            scene.punchLRateT.paused=true; 
+        //    scene.rightId=-1;scene.leftId=-1;
+            scene.eCount=0;
+            
+            
+               for(var i=0;i<  scene.pArrayRight.length;i++){
+                scene.pArrayRight[i].destroy();}
+                         scene.pArrayRight.shift();
+            
+                  for(var i=0;i<  scene.pArrayLeft.length;i++){
+                scene.pArrayLeft[i].destroy();}
+                         scene.pArrayLeft.shift();
+            
+for(k=0;k<scene.eArray.length;k++){ 
+             scene.eArray[k].destroy();
+}
+          //  leftE=-1;
+           // rightE=-1;
+            leftE=0;
+           rightE=0;
+    
+      scene.haltLeft=false;
+      scene.haltRight=false;
+            
+        }
+          
+function hideEnemies(toggle){
+       scene = game.scene.scenes[0];
+    
+    for(k=0;k<scene.eArray.length;k++){ 
+             scene.eArray[k].setActive(toggle).setVisible(toggle);
+}
+    
+}          
+  
+          
+          
+function leftOfBody(b) {
+    return b.x - b.halfWidth
+}
+        
+function rightOfBody(b) {
+    return b.x + b.halfWidth
+}
+        
+function sortedCollide(game, arr) {
+    arr.sort(function(a,b) { 
+        return leftOfBody(a.body) - leftOfBody(b.body);
+    })
+    for (var i = 0; i < arr.length; ++i){
+        var elem_i = arr[i]
+
+        for (var j = i + 1; j < arr.length; ++j) {
+            var elem_j = arr[j]
+            if (rightOfBody(elem_i.body) < leftOfBody(elem_j.body)) { 
+                break; 
+            }
+            game.physics.arcade.collide(elem_i, elem_j)
+        }
+    }
+}
+        
+function pushE(enemy,enemy){
+
+          if (enemy.x < scene.halfPoint && enemy.hit==false) enemy.x-=20;
+           if (enemy.x > scene.halfPoint && enemy.hit==false) enemy.x+=20;
+            
+            
+        //   enemy.halt= (enemy.x < scene.halfPoint && enemy.hit==false || enemy.x > scene.halfPoint && enemy.hit==false);
+          
+            
+        }
+        
+function strikeHit() {
+            hitFX = hitFxroup.get(player.x, player.y - 25);
+
+           
+
+            if (!hitFX) return; // None 
+
+           player.activatehitFx(hitFX);
+
+        } 
+          
+          
+function bossStrikeHit(){
+    
+            hitFX = hitBossFxGroup.get(rightE.x,rightE.y);
+       if (!hitFX) return; // None 
+    
+    if(rightE!=-1)
+    rightE.activatehitFx(hitFX);
+    
+}
+        
+function startGame() {
+    scene = game.scene.scenes[0];
+       if(scene.vid !=null) stopVid();
+                      scene.startRound.play();
+                      scene.displayMenu=false;
+    
+}       
+        
+          
+function playVid(){
+    scene = game.scene.scenes[0];
+   
+    scene.vid=  scene.add.video(game.canvas.width/2, game.canvas.height/2, 'gameTut');
+    scene.vid.play(true); scene.vid.depth=4;
+
+    scene.vid.displayWidth=600;
+    scene.vid.displayHeight=340;
+}         
+
+function stopVid(){
+     scene = game.scene.scenes[0];
+                 scene.vid.play(false);
+    scene.vid.destroy();
+}
+          
+          
+          
+function changeLevel(index){
+    
+    
+           for (var i = mesh.children.length - 1; i >= 0; i--) {
+    mesh.remove(mesh.children[i]);
+}
+    //levelOne
+    //levelTwo
+    //levelThree
+    //levelFour
+    
+    
+      scene = game.scene.scenes[0];
+    
+         switch(index){
+                 
+             case 0 : {loader.load('levelOne.glb', handle_load);changeMusic(0);}break;   
+             case 1 : {loader.load('levelOne.glb', handle_load);changeMusic(1);}break;
+             case 2 : {loader.load('levelTwo.glb', handle_load);changeMusic(2)}break;
+             case 3 : {loader.load('levelThree.glb', handle_load);changeMusic(3)}break;
+             case 4 : {loader.load('levelFour.glb', handle_load);changeMusic(4)}break;
+             case 5 : {loader.load('levelFive.glb', handle_load);changeMusic(5)}break;
+             case 6 : {loader.load('levelFive.glb', handle_load);changeMusic(6)}break;
+                 
+                 
+                 
+                 
+         }
+                  
+                 
+               
+       
+    
+    //changeMusic()
+
+
+    
+    
+    
+}
+
+function changeMusic(index){
+      scene = game.scene.scenes[0];
+    
+    
+    scene.music[scene.mIndex].stopAndRemoveBufferSource();
+    scene.music[index].play();
+    scene.mIndex=index;
+    
+    
+    
+}
+          
+          
+          
+          
+function update(time, delta) {
+
+    
+    
+    scene.countDownE.paused=!(scene.eSpawnMgt[roundNum][0][0] == "balloon1" && scene.countDown.text=="");
+        
+        
+    
+
+   if(scene.bossRound==false &&  scene.eSpawnMgt[roundNum][0][0] != "END"){
+       if(scene.leftList[0][1] ==-1 || scene.leftId!=-1 ){    scene.leftList.splice(0, 1); scene.leftId=getClosestLeft(); }else{scene.leftId=getClosestLeft()}
+       if(scene.rightList[0][1] ==-1){    scene.rightList.splice(0, 1); scene.rightId=getClosestRight();; }else{scene.rightId=getClosestRight();}
+    
+
+         leftE=scene.eArray[scene.leftId];
+           rightE=scene.eArray[scene.rightId];
+            
+    
+    
+   }else{scene.rightId=0;scene.leftId=0;rightE =scene.eArray[0];  leftE=scene.eArray[0];  }
+
+        
+   draw();
+    var C;
+var rate=400;//500
+var minC = 0.65 //0.148;.25 0.4 0.45
+var maxC = .9 //.503
+        var sMax = -4.5 //-5.4;-5.7
+         var minCZ = 2; //2
+        var maxCZ = 5;
+        var rateCZ = 4.72
+         var Vrate = -2;
+ //2D AND 3D CAMERA ACTION
+{
+    
+
+
+             if(scene.rightId!=-1 && scene.leftId!=-1 &&  scene.eSpawnMgt[roundNum][0][0] != "END" ){
+                
+               //   C = Math.abs(rate / rightE.x);
+                
+            if( Math.abs(rightE.x-scene.halfPoint)<Math.abs(leftE.x-scene.halfPoint)) {  
+            C = Math.abs(rate / Math.abs(rightE.x-scene.halfPoint));}
+            else{
+                
+                 C = Math.abs(rate / Math.abs(leftE.x-scene.halfPoint));
+            }}
+    
+    if(scene.bossRound==true){
+         C = Math.abs(rate / Math.abs(rightE.x-scene.halfPoint));
+        
+    }
+    
+            // if(B>A)
+            //    C=Math.abs( rate/B )
+            //    
+    //}
+    
+            C = Math.min(Math.max(parseFloat(C), minC), maxC)
+
+if(this.displayMenu===false)            cam.zoomTo(C, 10, true);
+
+
+            camera.position.z = Math.min(Math.max(parseFloat(
+                (Math.abs(sMax + ((C - minC) * rateCZ)) //8.3
+                )
+            ), minCZ), maxCZ)
+
+
+
+            camera.position.y = 0.04 + ((C - minC) / (Vrate)) //-0.
+            scene3d.position.y = ((C - minC) / (Vrate / 2));
+            scene3d.rotation.z = -0.27 - ((C - minC) / Vrate);
+            scene3d.position.z = (C - minC) / Vrate;
+
+
+    
+    scene3d.position.x=  (-this.placeHolder.x/400)+1 ;
+    this.placeHolder.x=player.x;
+
+
+
+            cam.startFollow(this.placeHolder);
+    
+
+             }
+
+//END
+            
+        
+            
+       
+
+             hitFxroup.children.iterate(function(hitFX) {
+
+
+             //    console.log(hitFX);
+                if (hitFX.anims.currentAnim.key === "hitFx1" && hitFX.anims.currentFrame.index == 5 || hitFX.flipX != player.flipX) {
+                    hitFxroup.killAndHide(hitFX); //flare.destroy();
+                }
+
+            });
+            
+    
+    
+            hitBossFxGroup.children.iterate(function(hitFX) {
+                
+                
+                     if (hitFX.anims.currentAnim.key === "bossFx1" && hitFX.anims.currentFrame.index == 4) {
+                    hitBossFxGroup.killAndHide(hitFX); //flare.destroy();
+                }
+                
+                   if (hitFX.anims.currentAnim.key === "bossFx2" && hitFX.anims.currentFrame.index == 4) {
+                    hitBossFxGroup.killAndHide(hitFX); //flare.destroy();
+                }
+                
+                   if (hitFX.anims.currentAnim.key === "bossFx3" && hitFX.anims.currentFrame.index ==4) {
+                    hitBossFxGroup.killAndHide(hitFX); //flare.destroy();
+                }
+                
+
+            });
+    
+    
+    
+    
+    
+    if(player.health==6){killEnemies(); this.points/=1.5;  this.failedRnd=true;   scene.countDown.text="a"; for(var i=1;i<6;i++) {
+     
+        player.heart[i].visible=true;}player.health=1; }
+            
+            if (scene.eCount == 0 ){ scene.countDown.text="a"
+rightE = -1;
+leftE = -1; 
+               if(scene.eSpawnMgt[roundNum][0][0] != "END") {spawnEnemies();
+                                                             
+                                                            switch(roundNum){
+                                                                case 3: {changeLevel(1);} break;
+                                                                case 4: {changeLevel(2);}break;
+                                                                case 6: {changeLevel(3);}break;
+                                                                case 8: {changeLevel(4);}break;
+                                                                case 10: {changeLevel(5);}break;
+                                                                case 12: {changeLevel(6);}break;
+                                                                
+                                                                
+                                                                    
+                                                                    
+                                                            }
+                                                             
+                                                            }else{scene.eCount =1}
+                                    scene.mainMenu.y=-400
+                                    
+                                    
+                                     scene.displayMenu=true;
+                            }
+    
+    
+    
+    
+(  this.displayMenu===true || scene.startRound.isPlaying==true) ?  (stopEnemies(),   cam.zoomTo(.65, 10, true)) : resumeEnemies(); 
+
+
+
+
+            
+      
+
+
+        }
+        
+        
+ function draw(){
+            //Draw Events Here     
+    scene.menuButton.y=scene.mainMenu.y+270;
+     roundNumStat2.y=scene.mainMenu.y+40;
+     
+     if(scene.displayMenu==false)
+{    
+scene.menuButton.active=false    
+scene.menuButton.visible=false    
+scene.mainMenu.alpha=0;    
+menuGraphics.alpha=0;
+  player.alpha=1;   
+         
+    
+    if(scene.comboHit==0) {scene.scoreLabel.text=""}else{   scene.scoreLabel.text=''+scene.comboHit.toString();}
+               enemyCount.text=''+scene.eCount.toString();
+               roundNumStat.text=''+roundNum.toString();
+         //text1.setText('' + this.comboHit.toString().substr(0, 4));
+  roundNumStat2.text=""
+  
+    
+   gamePoints.text=''+Math.round(scene.points).toString();
+   
+    if(scene.countDownE.paused==false){
+    countTimeE.text=''+(30-Math.round(scene.countDownE.elapsed/1000)).toString()}else{
+        countTimeE.text="";
+    }
+    
+    var xAdjust= ((bossSheild.text.length-1)*15);
+    
+    bossSheild.x=scene.rightHitBoxBar.criticalBar.x+(scene.rightHitBoxBar.criticalBar.width/2)-(15+xAdjust);
+    bossSheild.y=scene.rightHitBoxBar.outerBound.y+(scene.rightHitBoxBar.hitBar1.height/2)-18;
+ 
+    
+    if(typeof scene.pArrayRight[0] != "undefined" && scene.bossRound==true ){
+        
+        if(scene.pArrayRight[0].health>0)
+    bossSheild.text=""+ scene.pArrayRight[0].health;
+        
+        if(scene.pArrayRight[0].health<=0)
+    bossSheild.text="0";
+        
+    }else{   bossSheild.text=""; }
+    
+    
+      pop2 =( (1+(   Math.sin((Math.PI/4)*(scene.startRound.getCurrentTime()+1)*12))+3   ));
+    scene.countDown.scale=pop2;
+     scene.countDown.depth=2;
+    scene.countDown.y=cam.y+((game.context.canvas.height/2)-140)
+    if(scene.startRound.getCurrentTime()<.4)scene.countDown.text="1";
+    if(scene.startRound.getCurrentTime()>.4 && scene.startRound.getCurrentTime()<.88 )scene.countDown.text="2";
+    if(scene.startRound.getCurrentTime()>.88 && scene.startRound.getCurrentTime()<1.3)scene.countDown.text="3";
+    if(scene.startRound.getCurrentTime()>1.3)scene.countDown.text="";
+//menuGraphics =this.add.graphics({ fillStyle: { width: 10, color: 0x00ff00 } });
+// menu = new Phaser.Geom.Rectangle(200, 200, 500, 500); 
+
+
+    
+
+     
+    //   pop =(   Math.abs(-1+Math.abs(-1+(2+(comboTimer.getProgress()*1.2))))+1  );
+       pop =( (1+(   Math.sin((Math.PI/4)*comboTimer.getProgress()*5))   ));
+    
+      scene.scoreLabel.scale=pop;
+    scene.scoreLabel.x=(scene.halfPoint-(60-(-pop*30))- (scene.scoreLabel._text.length*15) );
+
+     //3 sin*(pi/4*x)
+ graphics.clear();
+
+
+
+            
+  vBar.w-=(player.vital)
+  graphics.fillRectShape(vBar.shape);
+    
+//graphics.alpha=(cam.zoom-.65)*4;
+    
+
+    
+    
+    
+graphics.fillStyle(0xFFFFFF)
+graphics.fillRectShape(scene.leftHitBoxBar.outerBound);
+     graphics.fillStyle(0xffff00);   
+graphics.fillRectShape(scene.leftHitBoxBar.hitBar1);
+     graphics.fillStyle(0xFFA500);   
+graphics.fillRectShape(scene.leftHitBoxBar.criticalBar);
+      graphics.fillStyle(0xffff00);   
+graphics.fillRectShape(scene.leftHitBoxBar.hitBar2);
+     graphics.fillStyle(0xff0000); 
+graphics.fillRectShape(scene.leftHitBoxBar.penaltyBar);
+    
+ 
+
+    
+    
+    var sum,remainder,part;
+    scene.leftHitBoxBar.SUM=
+        scene.leftHitBoxBar.outerBound.width+
+        scene.leftHitBoxBar.hitBar1.width+
+        scene.leftHitBoxBar.criticalBar.width+
+        scene.leftHitBoxBar.hitBar2.width+
+        scene.leftHitBoxBar.penaltyBar.width;
+    
+    
+
+    
+//      this.leftBarData;
+//        this.leftBarData=[];
+//        this.leftBarPartData;
+//        this.leftBarPartData=[];
+    scene.leftBarData[0]=200/ scene.leftHitBoxBar.outerBound.offset;
+    scene.leftBarData[1]=200/ scene.leftHitBoxBar.hitBar1.offset;
+    scene.leftBarData[2]=200/ scene.leftHitBoxBar.criticalBar.offset;
+    scene.leftBarData[3]=200/ scene.leftHitBoxBar.hitBar2.offset;
+    scene.leftBarData[4]=200/ scene.leftHitBoxBar.penaltyBar.offset;
+    
+    sum=   scene.leftBarData[0]+scene.leftBarData[1]+scene.leftBarData[2]+scene.leftBarData[3]+scene.leftBarData[4];
+    remainder = 200-sum;
+    part=remainder/5;
+    
+    scene.leftBarPartData[0]=(200/ scene.leftHitBoxBar.outerBound.offset)+part;
+    scene.leftBarPartData[1]=(200/ scene.leftHitBoxBar.hitBar1.offset)+part;
+    scene.leftBarPartData[2]=(200/ scene.leftHitBoxBar.criticalBar.offset)+part;
+    scene.leftBarPartData[3]=(200/ scene.leftHitBoxBar.hitBar2.offset)+part;
+    scene.leftBarPartData[4]=(200/ scene.leftHitBoxBar.penaltyBar.offset)+part;
+    
+    
+    
+   
+    
+        scene.leftHitBoxBar.outerBound.width=  scene.leftBarPartData[0];
+    scene.leftHitBoxBar.hitBar1.width=      scene.leftBarPartData[1];
+    scene.leftHitBoxBar.criticalBar.width=  scene.leftBarPartData[2];
+    scene.leftHitBoxBar.hitBar2.width=      scene.leftBarPartData[3];
+    scene.leftHitBoxBar.penaltyBar.width=    scene.leftBarPartData[4];
+    
+//    scene.leftHitBoxBar.outerBound.width=200/ scene.leftHitBoxBar.outerBound.offset;
+//    scene.leftHitBoxBar.hitBar1.width=200/  scene.leftHitBoxBar.hitBar1.offset;
+//    scene.leftHitBoxBar.criticalBar.width=200/  scene.leftHitBoxBar.criticalBar.offset;
+//    scene.leftHitBoxBar.hitBar2.width=200/  scene.leftHitBoxBar.hitBar2.offset;
+//    scene.leftHitBoxBar.penaltyBar.width=200/  scene.leftHitBoxBar.penaltyBar.offset;
+    
+    remainder=
+        scene.leftHitBoxBar.outerBound.offset+
+        scene.leftHitBoxBar.hitBar1.offset+
+        scene.leftHitBoxBar.criticalBar.offset+
+        scene.leftHitBoxBar.hitBar2.offset+
+        scene.leftHitBoxBar.penaltyBar.offset
+        ;
+    
+        //   console.log( scene.leftHitBoxBar.SUM);
+    
+    scene.leftHitBoxBar.intialX=190
+    scene.leftHitBoxBar.outerBound.x=scene.leftHitBoxBar.intialX+(player.x-400);
+    scene.leftHitBoxBar.hitBar1.x =scene.leftHitBoxBar.outerBound.x+scene.leftHitBoxBar.outerBound.width;
+    scene.leftHitBoxBar.criticalBar.x =scene.leftHitBoxBar.hitBar1.x+scene.leftHitBoxBar.hitBar1.width;
+    scene.leftHitBoxBar.hitBar2.x =scene.leftHitBoxBar.criticalBar.x+scene.leftHitBoxBar.criticalBar.width;
+    scene.leftHitBoxBar.penaltyBar.x =scene.leftHitBoxBar.hitBar2.x+scene.leftHitBoxBar.hitBar2.width;
+    
+    
+//    this.leftHitBoxBar.outerBound=   new Phaser.Geom.Rectangle(200, 680, this.leftHitBoxBar.SIZE/5, 30);     
+//this.leftHitBoxBar.hitBar1=      new Phaser.Geom.Rectangle(250, 680, this.leftHitBoxBar.SIZE/5, 30);     
+//this.leftHitBoxBar.criticalBar=  new Phaser.Geom.Rectangle(300, 680, this.leftHitBoxBar.SIZE/5, 30);     
+//this.leftHitBoxBar.hitBar2=      new Phaser.Geom.Rectangle(350, 680, this.leftHitBoxBar.SIZE/5, 30);     
+//this.leftHitBoxBar.penaltyBar=   n
+    
+    
+    
+    
+    
+     graphics.fillStyle(0xFFFFFF)
+graphics.fillRectShape(scene.rightHitBoxBar.outerBound);
+     graphics.fillStyle(0xffff00);   
+graphics.fillRectShape(scene.rightHitBoxBar.hitBar1);
+     graphics.fillStyle(0xFFA500);   
+graphics.fillRectShape(scene.rightHitBoxBar.criticalBar);
+      graphics.fillStyle(0xffff00);   
+graphics.fillRectShape(scene.rightHitBoxBar.hitBar2);
+     graphics.fillStyle(0xff0000); 
+graphics.fillRectShape(scene.rightHitBoxBar.penaltyBar);
+
+    
+        var sum,remainder,part;
+    scene.rightHitBoxBar.SUM=
+        scene.rightHitBoxBar.outerBound.width+
+        scene.rightHitBoxBar.hitBar1.width+
+        scene.rightHitBoxBar.criticalBar.width+
+        scene.rightHitBoxBar.hitBar2.width+
+        scene.rightHitBoxBar.penaltyBar.width;
+    
+//scene.rightHitBoxBar.penaltyBar.width;
+
+    
+//      this.leftBarData;
+//        this.leftBarData=[];
+//        this.leftBarPartData;
+//        this.leftBarPartData=[];
+    scene.rightBarData[0]=200/ scene.rightHitBoxBar.outerBound.offset;
+    scene.rightBarData[1]=200/ scene.rightHitBoxBar.hitBar1.offset;
+    scene.rightBarData[2]=200/ scene.rightHitBoxBar.criticalBar.offset;
+    scene.rightBarData[3]=200/ scene.rightHitBoxBar.hitBar2.offset;
+    scene.rightBarData[4]=200/ scene.rightHitBoxBar.penaltyBar.offset;
+    
+    sum=   scene.rightBarData[0]+scene.rightBarData[1]+scene.rightBarData[2]+scene.rightBarData[3]+scene.rightBarData[4];
+    remainder = 200-sum;
+    part=(remainder/5);
+    
+    scene.rightBarPartData[0]=(200/ scene.rightHitBoxBar.outerBound.offset)+part;
+    scene.rightBarPartData[1]=(200/ scene.rightHitBoxBar.hitBar1.offset)+part;
+    scene.rightBarPartData[2]=(200/ scene.rightHitBoxBar.criticalBar.offset)+part;
+    scene.rightBarPartData[3]=(200/ scene.rightHitBoxBar.hitBar2.offset)+part;
+    scene.rightBarPartData[4]=(200/ scene.rightHitBoxBar.penaltyBar.offset)+part;
+    
+    
+        var  offSetX=  -scene.rightHitBoxBar.outerBound.width;
+   
+    
+        scene.rightHitBoxBar.outerBound.width=  scene.rightBarPartData[0];
+    scene.rightHitBoxBar.hitBar1.width=      scene.rightBarPartData[1];
+    scene.rightHitBoxBar.criticalBar.width=  scene.rightBarPartData[2];
+    scene.rightHitBoxBar.hitBar2.width=      scene.rightBarPartData[3];
+    scene.rightHitBoxBar.penaltyBar.width=    scene.rightBarPartData[4]-offSetX;
+    
+    
+    remainder=
+        scene.rightHitBoxBar.outerBound.offset+
+        scene.rightHitBoxBar.hitBar1.offset+
+        scene.rightHitBoxBar.criticalBar.offset+
+        scene.rightHitBoxBar.hitBar2.offset+
+        scene.rightHitBoxBar.penaltyBar.offset
+        ;
+    
+
+    scene.rightHitBoxBar.intialX=590//590;
+       scene.rightHitBoxBar.outerBound.x=(scene.rightHitBoxBar.intialX)+(player.x-400);
+    scene.rightHitBoxBar.hitBar1.x =(scene.rightHitBoxBar.outerBound.x- scene.rightHitBoxBar.hitBar1.width)
+    scene.rightHitBoxBar.criticalBar.x =(scene.rightHitBoxBar.hitBar1.x- scene.rightHitBoxBar.criticalBar.width)
+    scene.rightHitBoxBar.hitBar2.x =(scene.rightHitBoxBar.criticalBar.x- scene.rightHitBoxBar.hitBar2.width)//scene.rightHitBoxBar.criticalBar.x
+    scene.rightHitBoxBar.penaltyBar.x =(scene.rightHitBoxBar.hitBar2.x- scene.rightHitBoxBar.penaltyBar.width)//scene.rightHitBoxBar.hitBar2.x
+    
+    
+        if( scene.leftId !==-1 && scene.leftId !==-Infinity &&  typeof leftE!=="undefined" && typeof leftE.anims!=="undefined"   ){
+    if(scene.pArrayLeft.length >0){
+         
+        
+        //BUG WHERE [0] IS INACTIVE CAUSED BY REPEATING INPUT ATTACKS ON CRIT
+        if(typeof scene.pArrayLeft[1] !="undefined" && scene.pArrayLeft[0].x < scene.pArrayLeft[1].x &&  scene.pArrayLeft[0].active==false){
+                     //      console.log("LeftFIX!!!")
+            scene.pArrayLeft[0].destroy();  scene.pArrayLeft.shift();
+                                                                                                                              
+                                                                                                                                             }
+        
+        
+        
+        scene.hitType.LEFT.MISS=(scene.pArrayLeft[0].x  > scene.leftHitBoxBar.outerBound.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.outerBound.x + scene.leftHitBoxBar.outerBound.width); 
+             
+            scene.hitType.LEFT.HIT=((   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.hitBar1.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.hitBar1.x + 
+               scene.leftHitBoxBar.hitBar1.width   ) || (   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.hitBar2.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.hitBar2.x + 
+               scene.leftHitBoxBar.hitBar2.width   )) ;
+            
+            scene.hitType.LEFT.CRIT=(   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.criticalBar.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.criticalBar.x + 
+               scene.leftHitBoxBar.criticalBar.width   );
+            
+            scene.hitType.LEFT.PENALTY=(   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.penaltyBar.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.penaltyBar.x + 
+               scene.leftHitBoxBar.penaltyBar.width   ) ;
+          
+
+    
+    }else{
+        
+          scene.hitType.LEFT.MISS=false; scene.hitType.LEFT.HIT=false;scene.hitType.LEFT.CRIT=false;scene.hitType.LEFT.PENALTY=false;
+    }
+            
+            
+            if(scene.pArrayLeft.length >0){
+            if(   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.outerBound.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.outerBound.x + 
+               scene.leftHitBoxBar.outerBound.width   )     {graphics.fillStyle(0xffffff, .5);
+                                                             graphics.fillRectShape(scene.leftHitBoxBar.outerBound);  
+                                                             
+            
+                                                             
+                                                            }
+            if(   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.hitBar1.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.hitBar1.x + 
+               scene.leftHitBoxBar.hitBar1.width   )    { graphics.fillStyle(0xffffff, .5);  
+                                                         graphics.fillRectShape(scene.leftHitBoxBar.hitBar1);
+                                                      
+           
+                                                        
+                                                        }
+            if(   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.criticalBar.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.criticalBar.x + 
+               scene.leftHitBoxBar.criticalBar.width   )    { graphics.fillStyle(0xffffff, .5); 
+                                                             graphics.fillRectShape(scene.leftHitBoxBar.criticalBar);
+                                                               
+                                                            }
+            if(   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.hitBar2.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.hitBar2.x + 
+               scene.leftHitBoxBar.hitBar2.width   )    { graphics.fillStyle(0xffffff, .5);  
+                                                         graphics.fillRectShape(scene.leftHitBoxBar.hitBar2); 
+                                                       
+                                                        }
+            if(   scene.pArrayLeft[0].x  > scene.leftHitBoxBar.penaltyBar.x &&  scene.pArrayLeft[0].x  < scene.leftHitBoxBar.penaltyBar.x + 
+               scene.leftHitBoxBar.penaltyBar.width   )    { graphics.fillStyle(0xffffff, .5);
+                                                            graphics.fillRectShape(scene.leftHitBoxBar.penaltyBar); 
+                                                         
+                                                           }
+               
+            }
+     
+        
+        }
+    
+    
+    
+    
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            if( scene.rightId !==-1 && scene.rightId !==-Infinity &&  typeof rightE!=="undefined" && typeof rightE.anims!=="undefined"   ){
+    if(scene.pArrayRight.length >0){
+         
+        
+        //BUG WHERE [0] IS INACTIVE CAUSED BY REPEATING INPUT ATTACKS ON CRIT
+        if(typeof scene.pArrayRight[1] !="undefined" && scene.pArrayRight[0].x > scene.pArrayRight[1].x &&  scene.pArrayRight[0].active==false){
+                       //    console.log("RightFIX!!!")
+            scene.pArrayRight[0].destroy();  scene.pArrayRight.shift();
+                                                                                                                              
+                                                                                                                                             }
+        
+        
+        
+        scene.hitType.RIGHT.MISS=(scene.pArrayRight[0].x  > scene.rightHitBoxBar.outerBound.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.outerBound.x + scene.rightHitBoxBar.outerBound.width); 
+             
+            scene.hitType.RIGHT.HIT=((   scene.pArrayRight[0].x  > scene.rightHitBoxBar.hitBar1.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.hitBar1.x + 
+               scene.rightHitBoxBar.hitBar1.width   ) || (   scene.pArrayRight[0].x  > scene.rightHitBoxBar.hitBar2.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.hitBar2.x + 
+               scene.rightHitBoxBar.hitBar2.width   )) ;
+            
+            scene.hitType.RIGHT.CRIT=(   scene.pArrayRight[0].x  > scene.rightHitBoxBar.criticalBar.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.criticalBar.x + 
+               scene.rightHitBoxBar.criticalBar.width   );
+            
+            scene.hitType.RIGHT.PENALTY=(   scene.pArrayRight[0].x > scene.rightHitBoxBar.penaltyBar.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.penaltyBar.x + 
+               scene.rightHitBoxBar.penaltyBar.width   ) ;
+          
+
+    
+    }else{
+        
+         scene.hitType.RIGHT.PENALTY=false;  scene.hitType.RIGHT.CRIT=false;  scene.hitType.RIGHT.HIT=false;scene.hitType.RIGHT.MISS=false;
+    }
+            
+            
+            if(scene.pArrayRight.length >0){
+            if(   scene.pArrayRight[0].x  > scene.rightHitBoxBar.outerBound.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.outerBound.x + 
+               scene.rightHitBoxBar.outerBound.width   )     {graphics.fillStyle(0xffffff, .5);
+                                                             graphics.fillRectShape(scene.rightHitBoxBar.outerBound);  
+                                                             
+            
+                                                             
+                                                            }
+            if(   scene.pArrayRight[0].x  > scene.rightHitBoxBar.hitBar1.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.hitBar1.x + 
+               scene.rightHitBoxBar.hitBar1.width   )    { graphics.fillStyle(0xffffff, .5);  
+                                                         graphics.fillRectShape(scene.rightHitBoxBar.hitBar1);
+                                                      
+           
+                                                        
+                                                        }
+            if(   scene.pArrayRight[0].x  > scene.rightHitBoxBar.criticalBar.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.criticalBar.x + 
+               scene.rightHitBoxBar.criticalBar.width   )    { graphics.fillStyle(0xffffff, .5); 
+                                                             graphics.fillRectShape(scene.rightHitBoxBar.criticalBar);
+                                                               
+                                                            }
+            if(   scene.pArrayRight[0].x  > scene.rightHitBoxBar.hitBar2.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.hitBar2.x + 
+               scene.rightHitBoxBar.hitBar2.width   )    { graphics.fillStyle(0xffffff, .5);  
+                                                         graphics.fillRectShape(scene.rightHitBoxBar.hitBar2); 
+                                                       
+                                                        }
+            if(   scene.pArrayRight[0].x+48   > scene.rightHitBoxBar.penaltyBar.x &&  scene.pArrayRight[0].x  < scene.rightHitBoxBar.penaltyBar.x + 
+               scene.rightHitBoxBar.penaltyBar.width   )    { graphics.fillStyle(0xffffff, .5);
+                                                            graphics.fillRectShape(scene.rightHitBoxBar.penaltyBar); 
+                                                         
+                                                           }
+               
+            }
+      
+   
+        
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+            var timeAdj,hexAdj;
+            var timeAdj2,hexAdj2;
+        
+
+//    
+    
+    
+            }
+     
+     
+     else{
+         scene.pullMenu.makeActive();
+         
+         if(scene.eSpawnMgt[roundNum][0][0] != "END"){
+             
+             
+             
+             if(scene.bossRound==false){
+             
+            roundNumStat2.text=''+roundNum.toString();
+            roundNumStat2.scale=4
+         
+         menuGraphics.clear();
+          
+             }else{
+                    
+                roundNumStat2.text="";
+                scene.mainMenu.setTexture('bossMenu',0);
+            
+                  if(scene.vid ==null ||  !scene.vid.active) playVid();
+                 
+                 
+                     scene.vid.y=scene.mainMenu.y+40;
+                   //   scene.vid.depth=3;
+             }
+            enemyCount.text=""
+            roundNumStat.text=""
+            gamePoints.text="";
+            roundNumStat2.setDepth(2);
+            scene.menuButton.active=true    
+            scene.menuButton.visible=true
+            scene.mainMenu.alpha=1;    
+            scene.scoreLabel.text=""
+             player.alpha=0;       
+        
+      
+         
+         
+         
+         
+         }else{
+         
+            gamePoints.scale=2.5
+            gamePoints.text=''+Math.round(scene.points).toString();
+            gamePoints.setDepth(2);
+            gamePoints.y=460
+            gamePoints.x=300-(gamePoints.text.length* (gamePoints.scale*10)  )
+            player.alpha=0;    
+            scene.menuButton.visible=false;           
+            scene.menuButton.active=false;  
+             scene.mainMenu.alpha=1; 
+             scene.mainMenu.setTexture('endMenu',0);
+           
+           }
+         
+         
+     // menuGraphics.fillRectShape(menu);      
+            }
+     
+     
+// END DRAW EVENTS
+
+        }
+        
+
+        
+
+
+          
+         var  leftKevent = document.createEvent("HTMLEvents");
+        var  rightKevent = document.createEvent("HTMLEvents"); 
+          
+          
+    
+        var rightKey = document.getElementById('right_button');	rightKevent.keyCode = 39;
+        var  leftKey = document.getElementById('left_button'); leftKevent.keyCode = 37;
+          
+          
+      //  rightKey.addEventListener('touchstart',throttled(game.loop.delta, rightInput ));
+     //   rightKey.addEventListener('touchstart',throttled(game.loop.delta, rightInput ));
+        
+          
+          
+        rightKey.addEventListener('touchstart', rightInput );      
+        leftKey.addEventListener('touchstart', leftInput );
+
+          
+        function rightInput(){     
+        var anon =  rightKey.dispatchEvent;
+            
+        rightKevent.initEvent( "keydown", true, true);
+            
+        anon(rightKevent);
+
+  rightKey.addEventListener('touchend',rightOut);     
+
+            
+        }  
+
+        function rightOut(){
+            
+            var anon =  rightKey.dispatchEvent;
+            rightKevent.initEvent( "keyup", true, true);
+            anon(rightKevent);
+              
+        return false;
+              
+          }
+          
+          
+          
+        function leftInput(){
+           
+            var anon =  leftKey.dispatchEvent;
+            leftKevent.initEvent( "keydown", true, true);
+            anon(leftKevent);
+            leftKey.addEventListener('touchend',leftOut);
+           
+            
+            return false;
+            
+        }       
+              
+        function leftOut(){
+             
+        var anon =  leftKey.dispatchEvent; 
+        leftKevent.initEvent( "keyup", true, true);
+        anon(leftKevent);
+            
+        return false;
+              
+          }
+        
+     
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+    </script> 
+  
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

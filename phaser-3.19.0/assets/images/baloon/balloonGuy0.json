@@ -1,0 +1,209 @@
+{
+	"textures": [
+		{
+			"image": "balloonGuy0.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1603,
+				"h": 240
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "baloons8.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 233,
+						"h": 238
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 233,
+						"h": 238
+					}
+				},
+				{
+					"filename": "baloons6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 233,
+						"h": 231
+					},
+					"frame": {
+						"x": 236,
+						"y": 1,
+						"w": 233,
+						"h": 231
+					}
+				},
+				{
+					"filename": "baloons7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 233,
+						"h": 231
+					},
+					"frame": {
+						"x": 471,
+						"y": 1,
+						"w": 233,
+						"h": 231
+					}
+				},
+				{
+					"filename": "baloons5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 4,
+						"w": 214,
+						"h": 216
+					},
+					"frame": {
+						"x": 706,
+						"y": 1,
+						"w": 214,
+						"h": 216
+					}
+				},
+				{
+					"filename": "baloons1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 14,
+						"w": 184,
+						"h": 190
+					},
+					"frame": {
+						"x": 922,
+						"y": 1,
+						"w": 184,
+						"h": 190
+					}
+				},
+				{
+					"filename": "baloons4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 34,
+						"y": 28,
+						"w": 161,
+						"h": 190
+					},
+					"frame": {
+						"x": 1108,
+						"y": 1,
+						"w": 161,
+						"h": 190
+					}
+				},
+				{
+					"filename": "baloons9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 40,
+						"w": 145,
+						"h": 157
+					},
+					"frame": {
+						"x": 1271,
+						"y": 1,
+						"w": 145,
+						"h": 157
+					}
+				},
+				{
+					"filename": "baloons2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 90,
+						"w": 184,
+						"h": 148
+					},
+					"frame": {
+						"x": 1418,
+						"y": 1,
+						"w": 184,
+						"h": 148
+					}
+				},
+				{
+					"filename": "baloons3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 179,
+						"w": 184,
+						"h": 59
+					},
+					"frame": {
+						"x": 1418,
+						"y": 151,
+						"w": 184,
+						"h": 59
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:0866836870c3d46e209ddf08810d25f7:aa90406dadc06917918d9590a8eced43:dc4f0d7242589627c08b4cfadf415a67$"
+	}
+}

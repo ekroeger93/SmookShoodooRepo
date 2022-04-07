@@ -1,0 +1,293 @@
+{
+	"textures": [
+		{
+			"image": "thugB.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 488,
+				"h": 852
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "thugB11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 24,
+						"w": 193,
+						"h": 151
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 193,
+						"h": 151
+					}
+				},
+				{
+					"filename": "thugB5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 54,
+						"w": 141,
+						"h": 184
+					},
+					"frame": {
+						"x": 196,
+						"y": 1,
+						"w": 141,
+						"h": 184
+					}
+				},
+				{
+					"filename": "thugB6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 54,
+						"w": 141,
+						"h": 184
+					},
+					"frame": {
+						"x": 339,
+						"y": 1,
+						"w": 141,
+						"h": 184
+					}
+				},
+				{
+					"filename": "thugB9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 27,
+						"w": 184,
+						"h": 210
+					},
+					"frame": {
+						"x": 1,
+						"y": 154,
+						"w": 184,
+						"h": 210
+					}
+				},
+				{
+					"filename": "thugB12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 24,
+						"w": 123,
+						"h": 214
+					},
+					"frame": {
+						"x": 187,
+						"y": 187,
+						"w": 123,
+						"h": 214
+					}
+				},
+				{
+					"filename": "thugB13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 67,
+						"y": 24,
+						"w": 123,
+						"h": 214
+					},
+					"frame": {
+						"x": 312,
+						"y": 187,
+						"w": 123,
+						"h": 214
+					}
+				},
+				{
+					"filename": "thugB3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 62,
+						"y": 13,
+						"w": 113,
+						"h": 216
+					},
+					"frame": {
+						"x": 1,
+						"y": 366,
+						"w": 113,
+						"h": 216
+					}
+				},
+				{
+					"filename": "thugB10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 23,
+						"w": 208,
+						"h": 215
+					},
+					"frame": {
+						"x": 116,
+						"y": 403,
+						"w": 208,
+						"h": 215
+					}
+				},
+				{
+					"filename": "thugB2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 63,
+						"y": 19,
+						"w": 119,
+						"h": 219
+					},
+					"frame": {
+						"x": 326,
+						"y": 403,
+						"w": 119,
+						"h": 219
+					}
+				},
+				{
+					"filename": "thugB4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 66,
+						"y": 18,
+						"w": 103,
+						"h": 220
+					},
+					"frame": {
+						"x": 1,
+						"y": 584,
+						"w": 103,
+						"h": 220
+					}
+				},
+				{
+					"filename": "thugB8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 17,
+						"w": 149,
+						"h": 221
+					},
+					"frame": {
+						"x": 106,
+						"y": 620,
+						"w": 149,
+						"h": 221
+					}
+				},
+				{
+					"filename": "thugB1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 79,
+						"y": 13,
+						"w": 94,
+						"h": 225
+					},
+					"frame": {
+						"x": 257,
+						"y": 624,
+						"w": 94,
+						"h": 225
+					}
+				},
+				{
+					"filename": "thugB7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 233,
+						"h": 238
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 10,
+						"w": 134,
+						"h": 227
+					},
+					"frame": {
+						"x": 353,
+						"y": 624,
+						"w": 134,
+						"h": 227
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:bd577a7aa62ca647e33abb732a2c7d50:b5afb39243d39153771954f2cefb6cc1:26da7deaf6f84f8667a33be4ed2e6fcf$"
+	}
+}

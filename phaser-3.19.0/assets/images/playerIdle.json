@@ -1,0 +1,146 @@
+{
+	"textures": [
+		{
+			"image": "playerIdle.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 59,
+				"h": 594
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "mistaIdle1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 99
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 99
+					}
+				},
+				{
+					"filename": "mistaIdle2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 99
+					},
+					"frame": {
+						"x": 0,
+						"y": 99,
+						"w": 59,
+						"h": 99
+					}
+				},
+				{
+					"filename": "mistaIdle3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 99
+					},
+					"frame": {
+						"x": 0,
+						"y": 198,
+						"w": 59,
+						"h": 99
+					}
+				},
+				{
+					"filename": "mistaIdle4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 99
+					},
+					"frame": {
+						"x": 0,
+						"y": 297,
+						"w": 59,
+						"h": 99
+					}
+				},
+				{
+					"filename": "mistaIdle5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 99
+					},
+					"frame": {
+						"x": 0,
+						"y": 396,
+						"w": 59,
+						"h": 99
+					}
+				},
+				{
+					"filename": "mistaIdle6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 99
+					},
+					"frame": {
+						"x": 0,
+						"y": 495,
+						"w": 59,
+						"h": 99
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c4dbcf44a3d087f966d8bd47616108b4:4d7e1460ffadbf24465a27c56ef3dd2d:6e7dea4f60d1d7aae353872d546fe706$"
+	}
+}
